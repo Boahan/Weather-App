@@ -3,22 +3,25 @@
 
 <img width="946" alt="mainpage" src="https://github.com/user-attachments/assets/c5609a91-7f74-450f-8c1a-3cd57c40e9db">
 
-This project is a simple weather application built using *HTML*, **CSS**, and **JavaScript**. It fetches real-time weather information from the **OpenWeather API** and displays it based on the user's current location or a manually searched city.
+This project is a weather application built using **NEXJ.JS**, **Tailwind CSS**, **Clerk** and **OpenWeatherMap API**. It fetches real-time weather information from the **OpenWeather API** and displays it based on the user's current location or a manually searched city.
 
 ## Key Features
-- **Automatic Location Detection**: When the app is loaded, it automatically requests the user's location using the **Geolocation API** and shows weather details based on it.
-- **Manual Search**: Users can search for the weather information of any city in the world.
-- **Current Weather**: Displays details like temperature, weather conditions, wind speed, humidity, and more.
-- **Responsive Design**: The app is built to work smoothly across various devices with a responsive design.
-- **Toggle Units**: Users can toggle between Celsius and Fahrenheit for temperature display.
+- **Automatic Location Detection**: Fetches weather data using the Geolocation API based on the user’s current location.
+- **Manual City Search**: Allows users to search for weather information in any city.
+- **Weather Details**: Displays real-time weather conditions, including temperature, wind speed, humidity, etc.
+- **Authentication**: Integrates with Clerk for secure user sign-up and login.
+- **Triggers for Violations**: Users can set triggers for specific weather conditions (e.g., temperature thresholds, rain alerts) and receive notifications when conditions are violated.
+- **Responsive Design**: Tailwind CSS ensures a seamless user experience across devices.
+- **Toggle Units**: Easily switch between Celsius and Fahrenheit for temperature display.
 
 ## Functionalities
 
 ### For Users:
-- **Location-based Weather**: On load, the app requests access to the user's location and fetches weather details accordingly. If denied, users can manually search for their city's weather.
-- **City Search**: Allows users to search for weather in any city around the world.
-- **Weather Details**: Displays the current temperature, weather condition, humidity, wind speed, and other relevant data.
-- **Toggle Units**: Easily switch between Celsius and Fahrenheit temperature units.
+- **Location-based Weather**: Automatically fetches and displays weather information for the user's current location upon app load.
+- **City Search**: Users can manually search for and view weather data for any city globally.
+- **Trigger Alerts**: Users can set custom weather triggers (e.g., temperature thresholds) and receive alerts when conditions are met.
+- **User Authentication**: Secured login and sign-up functionality powered by Clerk.
+- **Unit Toggle**: Easily switch between Celsius and Fahrenheit temperature units.
 
 ## Snapshots
 
@@ -37,12 +40,15 @@ This project is a simple weather application built using *HTML*, **CSS**, and **
 ### Search City:
 <img width="823" alt="SearchCity" src="https://github.com/user-attachments/assets/332af9ef-caa0-4f02-840b-e389505d953a">
 
-### DashBoard:
+### Threshold:
 <img width="929" alt="dashboardpage" src="https://github.com/user-attachments/assets/538e7e72-61f4-45be-9f0f-64fd392530f8">
+
+
+---
 
 ## Project Setup
 
-Since this is a basic HTML, CSS, and JavaScript project, there are no complex dependencies. You just need to clone the repository and open the `index.html` file in your browser.
+To clone and run this project, follow these steps:
 
 ### Installation & Running Locally
 
@@ -56,48 +62,82 @@ Since this is a basic HTML, CSS, and JavaScript project, there are no complex de
    cd weather-app
    ```
 
-3. **Run the project**:  
-   Simply open the `index.html` file in your preferred browser. No need to run any server.
+3. **Install dependencies**:  
+   Run the following command to install necessary packages:
+   ```bash
+   npm install
+   ```
 
+4. **Run the project**:  
+   Start the development server:
+   ```bash
+   npm run dev
+   ```
+   Then, open your browser and go to `http://localhost:3000`.
 
 ## Prerequisites
 
-- A Clerk account
-- An OpenWeather API key
-- Node.js and npm installed
+- A **Clerk account** for authentication.
+- An **OpenWeather API key** to fetch weather data.
+- **Node.js** and **npm** installed on your local machine.
 
 ## Setup Instructions
 
 ### Step 1: Set Up OpenWeather API
 
 1. **Create an OpenWeather Account**  
-   Go to [OpenWeather](https://openweathermap.org/api) and sign up.
+   Go to [OpenWeather](https://openweathermap.org/api) and sign up for an account.
 
 2. **Generate an API Key**  
-   After signing up, generate an API key.
+   After signing up, generate your API key from the OpenWeather dashboard.
 
-3. **Add the API Key to Your JavaScript File**  
-   In your JavaScript file where you will be making API calls, add the following code:
-   ```javascript
-   const apiKey = '<your_openweather_api_key>';
+3. **Add the API Key to Environment Variables**  
+   In the root of your project, create a `.env` file and add the following:
+   ```bash
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=<your_openweather_api_key>
+   ```
+   
 
+### Step 2: Set Up Clerk for Authentication
+
+1. **Create a Clerk Account**  
+   Go to [Clerk.dev](https://clerk.dev) and sign up for an account.
+
+2. **Create a `.env` File**  
+   In the root of your project directory, create a `.env` file if it doesn't already exist.
+
+3. **Add the Clerk Keys**  
+   In your `.env` file, add the following keys:
+   ```bash
+   NEXT_PUBLIC_CLERK_FRONTEND_API=<your_clerk_frontend_api_key>
+   NEXT_PUBLIC_CLERK_API_KEY=<your_clerk_api_key>
+   ```
+
+4. **Add Other Required Environment Variables**  
+   Ensure that you also include your OpenWeather API key and any other required environment variables. Your `.env` file should look like this:
+   ```bash
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=<your_openweather_api_key>
+   NEXT_PUBLIC_CLERK_FRONTEND_API=<your_clerk_frontend_api_key>
+   NEXT_PUBLIC_CLERK_API_KEY=<your_clerk_api_key>
+   ```
+
+---
 
 ### OR
 ## Environment Variables
 
 Create a `.env` file in the root of your project directory:
 
-And copy content of requirements.txt to the `.env` file.
+And copy content of requirements.txt (provided within the codebase) to the `.env` file.
 
 ## Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: Next.js, React, Tailwind CSS
 - **API**: OpenWeather API (for fetching weather data)
-- **Geolocation**: The browser's built-in **Geolocation API** is used to get the user's current location.
+- **Authentication**: Clerk for user sign-up and login
+- **Geolocation**: The browser's built-in Geolocation API to fetch the user’s current location.
 
-## Deployment
-
-The application is deployed on **Vercel**. Live Link: [https://your-weather-app.github.io]
+---
 
 ## Contact
 
