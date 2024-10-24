@@ -130,6 +130,11 @@ Create a `.env` file in the root of your project directory:
 
 And copy content of requirements.txt (provided within the codebase) to the `.env` file.
 
+## Credentials for login
+
+Email: dummy@123gmail.com
+Password: dummu@123
+
 ## Tech Stack
 
 - **Frontend**: Next.js, React, Tailwind CSS
