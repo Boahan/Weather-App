@@ -133,6 +133,7 @@ And copy content of requirements.txt (provided within the codebase) to the `.env
 ## Credentials for login
 
 Email: dummy@123gmail.com
+
 Password: dummu@123
 
 ## Tech Stack
